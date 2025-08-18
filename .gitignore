@@ -130,15 +130,21 @@ dmypy.json
 
 # Project specific
 extracted_data/
+logs/
 *.log
-secrets.json
+
+# Configuration and credentials
+config/secrets.json
+.keys/
+*.key
+*.pem
 credentials.json
 
-# GCP credentials
+# Legacy GCP credentials (for migration)
 *.json
 !requirements.txt
-!config.json
-!secrets.json.template
+!config/config.json
+!config/secrets.json.template
 
 # Temporary files
 test_output/
