@@ -1,4 +1,4 @@
-# MySQL to GCP Data Pipeline
+# MySQL to GCP Data Pipeline - Version 2.0
 
 A daily data pipeline that extracts data from a MySQL database (pk_gest_xer) and prepares it for Google Cloud Platform (GCP) as a bronze layer for data governance, with eventual BigQuery integration.
 
