@@ -1,0 +1,221 @@
+table,strategy,confidence,score,rows,watermark_column,primary_keys,timestamp_columns,implementation_notes
+Pie_Fac,FULL_REPLACE,HIGH,-5,107634,,,,Full table replacement recommended. Simple and reliable approach
+Pie_Fac_ML,FULL_REPLACE,HIGH,-5,107634,,,,Full table replacement recommended. Simple and reliable approach
+Recambios,FULL_REPLACE,HIGH,-20,22,,,,Full table replacement recommended. Simple and reliable approach
+accesos_presencia,INCREMENTAL_PREFERRED,HIGH,90,10946,fecha,"ic_codigo, ic_cod_usu, ic_cod_ofi","fecha, f_fec_mod, fecha_crea",Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+agenda,INCREMENTAL_POSSIBLE,MEDIUM,65,301,fecha_ini,"ic_ano, ic_cod_age, ic_cod_ofi","fecha_ini, fecha_fin",Incremental loading feasible with 'fecha_ini'. Consider data volume and update patterns to decide vs full replace
+agenda_usuarios,INCREMENTAL_CHALLENGING,MEDIUM,30,820,,"ic_ano, ic_cod_age, ic_cod_ofi, ic_cod_usu",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alb_cli,INCREMENTAL_CHALLENGING,MEDIUM,20,20607,,"ic_cod_ofi, ic_ano, ic_cod_alb",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alb_cli_lin,INCREMENTAL_CHALLENGING,MEDIUM,20,44027,,"ic_cod_ofi, ic_ano, ic_cod_alb, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alb_pro,INCREMENTAL_CHALLENGING,MEDIUM,20,85624,,"ic_cod_ofi, ic_ano, ic_cod_alb",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alb_pro_lin,INCREMENTAL_CHALLENGING,MEDIUM,20,124338,,"ic_cod_ofi, ic_ano, ic_cod_alb, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alm,FULL_REPLACE,HIGH,15,40,,ic_cod_alm,,Full table replacement recommended. Simple and reliable approach
+alm_coste,FULL_REPLACE,HIGH,5,16149,,"ic_cod_alm, cc_cod_pie, ic_orden",,Full table replacement recommended. Simple and reliable approach
+alm_his_1,INCREMENTAL_CHALLENGING,MEDIUM,25,306612,,"ic_ano, ic_cod_alm, cc_cod_pie, ic_cod_ofi, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alm_his_2,INCREMENTAL_CHALLENGING,MEDIUM,25,164979,,"ic_ano, ic_cod_alm, cc_cod_pie, ic_cod_ofi, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alm_his_4,INCREMENTAL_CHALLENGING,MEDIUM,25,0,,"ic_ano, ic_cod_alm, cc_cod_pie, ic_cod_ofi, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alm_lug_alt,FULL_REPLACE,HIGH,5,278,,"ic_cod_lug, ic_cod_ofi, ic_cod_alm",,Full table replacement recommended. Simple and reliable approach
+alm_lug_caj,FULL_REPLACE,HIGH,5,201,,"ic_cod_lug, ic_cod_ofi, ic_cod_alm",,Full table replacement recommended. Simple and reliable approach
+alm_lug_est,FULL_REPLACE,HIGH,5,278,,"ic_cod_lug, ic_cod_ofi, ic_cod_alm",,Full table replacement recommended. Simple and reliable approach
+alm_lug_mod,FULL_REPLACE,HIGH,5,402,,"ic_cod_lug, ic_cod_ofi, ic_cod_alm",,Full table replacement recommended. Simple and reliable approach
+alm_mov,INCREMENTAL_CHALLENGING,MEDIUM,30,7,,ic_cod_mov,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+alm_ofi,FULL_REPLACE,HIGH,5,160,,"ic_cod_ofi, ic_cod_alm",,Full table replacement recommended. Simple and reliable approach
+alm_pie_1,FULL_REPLACE,HIGH,5,96240,,"ic_cod_alm, cc_cod_pie, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+alm_pie_2,FULL_REPLACE,HIGH,5,40509,,"ic_cod_alm, cc_cod_pie, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+alm_pie_4,FULL_REPLACE,HIGH,5,0,,"ic_cod_alm, cc_cod_pie, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+audit_errores,INCREMENTAL_PREFERRED,HIGH,120,0,f_fecha,id,f_fecha,Implement incremental loading using 'f_fecha' as watermark column. Query: SELECT * FROM table WHERE f_fecha > last_run_timestamp
+audit_ia,INCREMENTAL_PREFERRED,HIGH,120,15371,timestamp,ic_cod_log,"timestamp, fecha",Implement incremental loading using 'timestamp' as watermark column. Query: SELECT * FROM table WHERE timestamp > last_run_timestamp
+audit_ia_tipo,INCREMENTAL_POSSIBLE,MEDIUM,60,2,,ic_cod_tipo,,Incremental loading possible but may require custom logic or composite keys
+avi_comen,INCREMENTAL_POSSIBLE,MEDIUM,65,67288,f_fecha,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_usu, ic_linea",f_fecha,Incremental loading feasible with 'f_fecha'. Consider data volume and update patterns to decide vs full replace
+avi_comen_rec,INCREMENTAL_POSSIBLE,MEDIUM,65,8525,f_fecha,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_usu, ic_linea","f_fecha, f_fecha_prev, f_fecha_ent",Incremental loading feasible with 'f_fecha'. Consider data volume and update patterns to decide vs full replace
+avi_comen_rec_est,FULL_REPLACE,HIGH,15,13,,ic_cod_est,,Full table replacement recommended. Simple and reliable approach
+avi_comen_rec_his_dev,INCREMENTAL_PREFERRED,HIGH,110,173,fecha,"ic_codigo, ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+avi_comen_rec_his_est,INCREMENTAL_PREFERRED,HIGH,110,23392,fecha,"ic_codigo, ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+avi_comen_rec_pri,FULL_REPLACE,HIGH,15,3,,ic_cod_pri,,Full table replacement recommended. Simple and reliable approach
+avi_comen_rec_tip,FULL_REPLACE,HIGH,15,2,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+avi_estados,INCREMENTAL_CHALLENGING,MEDIUM,25,9,,ic_cod_est,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+avi_gar,FULL_REPLACE,HIGH,5,0,,"ic_ano, ic_cod_avi",,Full table replacement recommended. Simple and reliable approach
+avi_his_est,INCREMENTAL_PREFERRED,HIGH,110,163049,fecha,"ic_codigo, ic_ano, ic_cod_avi, ic_cod_ofi",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+avi_his_porcentajes,INCREMENTAL_PREFERRED,HIGH,110,3561,fecha,"ic_codigo, ic_ano, ic_cod_avi, ic_cod_ofi",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+avi_his_revisiones,INCREMENTAL_PREFERRED,HIGH,110,74403,fecha,"ic_codigo, ic_ano, ic_cod_avi, ic_cod_ofi",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+avi_hor_fac,INCREMENTAL_CHALLENGING,MEDIUM,20,81455,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_usu, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+avi_horas,FULL_REPLACE,HIGH,5,308104,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_jobs,FULL_REPLACE,HIGH,5,19,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_job",,Full table replacement recommended. Simple and reliable approach
+avi_lineas,FULL_REPLACE,HIGH,5,373446,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_lineas_,FULL_REPLACE,HIGH,5,29755,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_meta,FULL_REPLACE,HIGH,5,57796,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_motivos_parada,INCREMENTAL_POSSIBLE,MEDIUM,40,4,,ic_cod_mot,,Incremental loading possible but may require custom logic or composite keys
+avi_obs,FULL_REPLACE,HIGH,5,252756,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_tip, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_obs_,FULL_REPLACE,HIGH,5,5596,,"ic_ano, ic_cod_avi, ic_cod_ofi, ic_cod_tip, ic_linea",,Full table replacement recommended. Simple and reliable approach
+avi_tip_fic,FULL_REPLACE,HIGH,15,18,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+avi_tipos,FULL_REPLACE,HIGH,0,20,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+avisos,INCREMENTAL_POSSIBLE,MEDIUM,65,76202,f_fec_rev_rec,"ic_ano, ic_cod_avi, ic_cod_ofi",f_fec_rev_rec,Incremental loading feasible with 'f_fec_rev_rec'. Consider data volume and update patterns to decide vs full replace
+avisos_,FULL_REPLACE,HIGH,5,4362,,"ic_ano, ic_cod_avi, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+bancos,FULL_REPLACE,HIGH,5,12,,"ic_cod_ban, ic_cod_suc",,Full table replacement recommended. Simple and reliable approach
+bd_config_planificador,FULL_REPLACE,HIGH,-10,4,,"ic_codigo, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+bd_config_tareas,FULL_REPLACE,HIGH,-10,4,,"ic_codigo, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+campanas,FULL_REPLACE,HIGH,15,3,,ic_cod_cam,,Full table replacement recommended. Simple and reliable approach
+campanas_lineas,FULL_REPLACE,HIGH,5,2,,"ic_cod_cam, ic_linea",,Full table replacement recommended. Simple and reliable approach
+categorias,FULL_REPLACE,HIGH,0,27,,cc_cod_cat,,Full table replacement recommended. Simple and reliable approach
+con_diario,FULL_REPLACE,HIGH,5,302060,,"ic_ano, ic_cod_asi, ic_cod_apu, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+con_letras,FULL_REPLACE,HIGH,15,15,,ic_cod_let,,Full table replacement recommended. Simple and reliable approach
+con_subctas,FULL_REPLACE,HIGH,5,172,,"cc_cod_sub, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+con_tipos,FULL_REPLACE,HIGH,0,0,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+con_tmp,FULL_REPLACE,HIGH,5,58,,"ic_cod_asi, ic_cod_apu, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+contratos,INCREMENTAL_POSSIBLE,MEDIUM,65,15299,fecha,"ic_ano, ic_cod_con, ic_cod_ofi","fecha, fecha_fir1, fecha_fir2, fecha_fir3, fecha_fir_sal, fecha_fir_ract, fecha_prevista_entrada, fecha_prevista_salida, fecha_entrada, fecha_salida, f_last_service",Incremental loading feasible with 'fecha'. Consider data volume and update patterns to decide vs full replace
+contratos_estados,FULL_REPLACE,HIGH,0,6,,ic_cod_est,,Full table replacement recommended. Simple and reliable approach
+contratos_insertar,FULL_REPLACE,HIGH,5,918,,"ic_ano, ic_cod_con",,Full table replacement recommended. Simple and reliable approach
+contratos_log,INCREMENTAL_PREFERRED,HIGH,120,3724,fecha,id,fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+contratos_ra,INCREMENTAL_POSSIBLE,MEDIUM,65,0,f_fecha_matriculacion,"ic_cod_ofi, ic_ano, ic_cod_con","f_fecha_matriculacion, f_fecha_recepcion",Incremental loading feasible with 'f_fecha_matriculacion'. Consider data volume and update patterns to decide vs full replace
+contratos_ra_lineas,FULL_REPLACE,HIGH,5,139581,,"ic_cod_ofi, ic_ano, ic_cod_con, id",,Full table replacement recommended. Simple and reliable approach
+danos_jobs,FULL_REPLACE,HIGH,15,9,,ic_cod_job,,Full table replacement recommended. Simple and reliable approach
+danos_subzonas,FULL_REPLACE,HIGH,5,406,,"ic_cod_zon, ic_cod_sub",,Full table replacement recommended. Simple and reliable approach
+danos_zonas,FULL_REPLACE,HIGH,15,80,,ic_cod_zon,,Full table replacement recommended. Simple and reliable approach
+danos_zonas_lineas,FULL_REPLACE,HIGH,5,1220,,"ic_cod_zon, ic_cod_sub, ic_linea",,Full table replacement recommended. Simple and reliable approach
+docs,FULL_REPLACE,HIGH,5,5359,,"ic_cod_doc, ic_cod_ofi, ic_cod_tip",,Full table replacement recommended. Simple and reliable approach
+docs_albcli,INCREMENTAL_CHALLENGING,MEDIUM,20,168,,"ic_cod_doc, ic_cod_ofi, ic_cod_tip",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+docs_albpro,INCREMENTAL_CHALLENGING,MEDIUM,20,2,,"ic_cod_doc, ic_cod_ofi, ic_cod_tip",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+docs_comu,FULL_REPLACE,HIGH,5,4,,"ic_cod_doc, ic_cod_ofi, ic_cod_tip, ic_linea",,Full table replacement recommended. Simple and reliable approach
+docs_pro,FULL_REPLACE,HIGH,5,61,,"ic_cod_doc, ic_cod_ofi, ic_cod_tip",,Full table replacement recommended. Simple and reliable approach
+docs_tipos,FULL_REPLACE,HIGH,0,6,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+dto_cli_fam,FULL_REPLACE,HIGH,5,581,,"ic_cod_ofi, ic_cod_cli, ic_cod_fam",,Full table replacement recommended. Simple and reliable approach
+dto_cli_pie,FULL_REPLACE,HIGH,5,228,,"ic_cod_ofi, ic_cod_cli, cc_cod_pie",,Full table replacement recommended. Simple and reliable approach
+dto_cli_sub_fam,FULL_REPLACE,HIGH,5,2,,"ic_cod_ofi, ic_cod_cli, ic_cod_fam, ic_cod_sub",,Full table replacement recommended. Simple and reliable approach
+dto_cli_tipos,FULL_REPLACE,HIGH,0,18,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+dto_cli_tipos_fam,FULL_REPLACE,HIGH,-10,0,,"ic_cod_tip, ic_cod_fam",,Full table replacement recommended. Simple and reliable approach
+dto_cli_tipos_margen,FULL_REPLACE,HIGH,-10,0,,"ic_cod_tip, ic_cod_tra",,Full table replacement recommended. Simple and reliable approach
+dto_cli_tipos_pie,FULL_REPLACE,HIGH,-10,0,,"ic_cod_tip, cc_cod_pie",,Full table replacement recommended. Simple and reliable approach
+dto_cli_tipos_sub_fam,FULL_REPLACE,HIGH,-10,491,,"ic_cod_tip, ic_cod_fam, ic_cod_sub",,Full table replacement recommended. Simple and reliable approach
+dto_cli_tramos,FULL_REPLACE,HIGH,5,0,,"ic_cod_ofi, ic_cod_cli, ic_cod_tra",,Full table replacement recommended. Simple and reliable approach
+ent_cli,FULL_REPLACE,HIGH,5,5340,,"ic_cod_cli, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+ent_cli_ban,INCREMENTAL_CHALLENGING,MEDIUM,30,0,,"ic_cod_cli, ic_cod_ofi, ic_cod_ban, ic_cod_suc, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+ent_cli_blo,FULL_REPLACE,HIGH,5,2390,,"ic_cod_cli, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_cli_com,FULL_REPLACE,HIGH,5,1160,,"ic_cod_cli, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_cli_con,FULL_REPLACE,HIGH,5,763,,"ic_cod_cli, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_cli_des,FULL_REPLACE,HIGH,-20,102,,,,Full table replacement recommended. Simple and reliable approach
+ent_cli_doc,FULL_REPLACE,HIGH,5,2777,,"ic_cod_cli, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_cli_doc_tip,FULL_REPLACE,HIGH,15,7,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+ent_cli_fam,FULL_REPLACE,HIGH,15,8,,ic_cod_fam,,Full table replacement recommended. Simple and reliable approach
+ent_cli_fam_des,FULL_REPLACE,HIGH,5,8,,"ic_cod_cla, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_cli_origen,INCREMENTAL_POSSIBLE,MEDIUM,40,11,,ic_cod_ori,,Incremental loading possible but may require custom logic or composite keys
+ent_cli_rie,FULL_REPLACE,HIGH,5,5215,,"ic_cod_cli, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+ent_pro,FULL_REPLACE,HIGH,5,1540,,"ic_cod_pro, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+ent_pro_blo,FULL_REPLACE,HIGH,5,14,,"ic_cod_pro, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ent_pro_fam,FULL_REPLACE,HIGH,15,1,,ic_cod_fam,,Full table replacement recommended. Simple and reliable approach
+errores_ia,INCREMENTAL_PREFERRED,HIGH,100,622,timestamp,ic_cod_err,"timestamp, fecha",Implement incremental loading using 'timestamp' as watermark column. Query: SELECT * FROM table WHERE timestamp > last_run_timestamp
+fac_cli,INCREMENTAL_CHALLENGING,MEDIUM,20,54189,,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_cli_aut,INCREMENTAL_CHALLENGING,MEDIUM,20,36553,,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let, ic_fac, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_cli_est,INCREMENTAL_CHALLENGING,MEDIUM,30,3,,ic_cod_est,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_cli_firmas,INCREMENTAL_PREFERRED,HIGH,80,26366,f_fecha,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let, ic_linea","f_fecha, f_fecha_firma, f_fecha_envio",Implement incremental loading using 'f_fecha' as watermark column. Query: SELECT * FROM table WHERE f_fecha > last_run_timestamp
+fac_cli_lin,INCREMENTAL_CHALLENGING,MEDIUM,20,60103,,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_pro,INCREMENTAL_CHALLENGING,MEDIUM,20,26594,,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_pro_est,INCREMENTAL_CHALLENGING,MEDIUM,30,3,,ic_cod_est,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fac_pro_lin,INCREMENTAL_CHALLENGING,MEDIUM,20,68097,,"ic_cod_ofi, ic_ano, ic_cod_fac, ic_cod_let, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+fields_gauges,INCREMENTAL_POSSIBLE,MEDIUM,40,10,,ic_cod_gau,,Incremental loading possible but may require custom logic or composite keys
+fields_typ_operators,INCREMENTAL_POSSIBLE,MEDIUM,40,10,,ic_typ_ope,,Incremental loading possible but may require custom logic or composite keys
+fields_types,INCREMENTAL_POSSIBLE,MEDIUM,40,8,,ic_cod_typ,,Incremental loading possible but may require custom logic or composite keys
+firmas,INCREMENTAL_CHALLENGING,MEDIUM,30,48,,"ic_ano, ic_cod_avi, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+for_pago,FULL_REPLACE,HIGH,15,36,,ic_cod_pag,,Full table replacement recommended. Simple and reliable approach
+for_pago2,FULL_REPLACE,HIGH,15,24,,ic_cod_pag,,Full table replacement recommended. Simple and reliable approach
+garantias,FULL_REPLACE,HIGH,5,3113,,"ic_ano, ic_cod_gar, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+gh_acciones,INCREMENTAL_POSSIBLE,MEDIUM,40,0,,ic_cod_acc,,Incremental loading possible but may require custom logic or composite keys
+gh_estados,FULL_REPLACE,HIGH,0,3,,ic_cod_est,,Full table replacement recommended. Simple and reliable approach
+gh_estados_devolucion,FULL_REPLACE,HIGH,-10,3,,"ic_cod_est, c_nombre",,Full table replacement recommended. Simple and reliable approach
+gh_historico_acciones,INCREMENTAL_PREFERRED,HIGH,120,2002,f_fecha,id,f_fecha,Implement incremental loading using 'f_fecha' as watermark column. Query: SELECT * FROM table WHERE f_fecha > last_run_timestamp
+gh_lista_espera,INCREMENTAL_POSSIBLE,MEDIUM,65,1,f_fecha,"ic_cod_ofi, ic_cod_pie, ic_cod_usu",f_fecha,Incremental loading feasible with 'f_fecha'. Consider data volume and update patterns to decide vs full replace
+gh_piezas,FULL_REPLACE,HIGH,5,128,,"ic_cod_ofi, ic_cod_pie",,Full table replacement recommended. Simple and reliable approach
+gh_piezas_lineas,INCREMENTAL_POSSIBLE,MEDIUM,65,128,f_fecha_inicio,"ic_cod_ofi, ic_cod_pie, ic_linea","f_fecha_inicio, f_fecha_final",Incremental loading feasible with 'f_fecha_inicio'. Consider data volume and update patterns to decide vs full replace
+jobs_carpetas,FULL_REPLACE,HIGH,15,100,,ic_cod_job,,Full table replacement recommended. Simple and reliable approach
+jobs_maestras,FULL_REPLACE,HIGH,15,2,,ic_cod_job,,Full table replacement recommended. Simple and reliable approach
+mae_carpetas,INCREMENTAL_POSSIBLE,MEDIUM,40,4,,ic_cod_car,,Incremental loading possible but may require custom logic or composite keys
+mae_ficheros,INCREMENTAL_POSSIBLE,MEDIUM,40,27,,ic_cod_fic,,Incremental loading possible but may require custom logic or composite keys
+mae_tables,INCREMENTAL_POSSIBLE,MEDIUM,40,18,,ic_cod_tab,,Incremental loading possible but may require custom logic or composite keys
+mae_tables_family,INCREMENTAL_POSSIBLE,MEDIUM,40,9,,ic_cod_fam,,Incremental loading possible but may require custom logic or composite keys
+mae_tables_fields,INCREMENTAL_CHALLENGING,MEDIUM,30,203,,"ic_cod_tab, cc_cod_fie",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+mae_tables_fields_groupby,INCREMENTAL_CHALLENGING,MEDIUM,30,0,,"ic_cod_tab, cc_cod_fie",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+mae_tables_fields_usu_field,INCREMENTAL_CHALLENGING,MEDIUM,30,136,,"ic_cod_tab, cc_cod_fie, ic_cod_usu",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+mae_tables_fields_usu_order,INCREMENTAL_CHALLENGING,MEDIUM,30,14,,"ic_cod_tab, cc_cod_fie, ic_cod_usu",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+mae_views,INCREMENTAL_POSSIBLE,MEDIUM,40,0,,ic_cod_vie,,Incremental loading possible but may require custom logic or composite keys
+mae_views_fields,INCREMENTAL_CHALLENGING,MEDIUM,30,0,,"ic_cod_vie, ic_cod_tab, cc_cod_fie, ic_cod_usu",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+mae_views_where,INCREMENTAL_CHALLENGING,MEDIUM,30,0,,"ic_cod_vie, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+marcas,FULL_REPLACE,HIGH,15,74,,ic_cod_mar,,Full table replacement recommended. Simple and reliable approach
+margen_cliente,ERROR,LOW,0,0,,,,
+margen_cliente_alb_avi,ERROR,LOW,0,0,,,,
+metacode_actt,INCREMENTAL_POSSIBLE,MEDIUM,40,705,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_cont,INCREMENTAL_POSSIBLE,MEDIUM,40,683,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_loct,INCREMENTAL_POSSIBLE,MEDIUM,40,489,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_objt,INCREMENTAL_POSSIBLE,MEDIUM,40,23811,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_ran,INCREMENTAL_POSSIBLE,MEDIUM,40,3185,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_rea,INCREMENTAL_POSSIBLE,MEDIUM,40,51879,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_text,INCREMENTAL_POSSIBLE,MEDIUM,40,647283,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_val,INCREMENTAL_POSSIBLE,MEDIUM,40,817778,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+metacode_vrst,INCREMENTAL_POSSIBLE,MEDIUM,40,709,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+mostrar_pdf,INCREMENTAL_PREFERRED,HIGH,100,2543,fecha,ic_codigo,"fecha, fecha2",Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+mostrar_pdf_alb,INCREMENTAL_PREFERRED,HIGH,115,55,fecha,ic_codigo,"fecha, fecha2",Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+mostrar_pdf_con,INCREMENTAL_PREFERRED,HIGH,100,62,fecha,ic_codigo,"fecha, fecha2",Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+nam_ban,FULL_REPLACE,HIGH,5,20,,"ic_cod_ban, ic_cod_suc, ic_linea",,Full table replacement recommended. Simple and reliable approach
+ped_pro,INCREMENTAL_PREFERRED,HIGH,80,64678,f_fecha_enviado,"ic_ano, ic_cod_ofi, ic_cod_ped",f_fecha_enviado,Implement incremental loading using 'f_fecha_enviado' as watermark column. Query: SELECT * FROM table WHERE f_fecha_enviado > last_run_timestamp
+ped_pro_des,INCREMENTAL_CHALLENGING,MEDIUM,20,0,,"ic_cod_pro, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+ped_pro_est,INCREMENTAL_CHALLENGING,MEDIUM,30,5,,ic_cod_est,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+ped_pro_lin,INCREMENTAL_CHALLENGING,MEDIUM,20,108173,,"ic_cod_ofi, ic_ano, ic_cod_ped, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+ped_pro_lin_his,INCREMENTAL_POSSIBLE,MEDIUM,65,4334,,"ic_codigo, ic_cod_ofi, ic_ano, ic_cod_ped, ic_linea",,Incremental loading possible but may require custom logic or composite keys
+ped_pro_tip,INCREMENTAL_CHALLENGING,MEDIUM,30,6,,ic_cod_tip,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+pie_descuentos,FULL_REPLACE,HIGH,15,1,,ic_cod_des,,Full table replacement recommended. Simple and reliable approach
+pie_familias,FULL_REPLACE,HIGH,15,53,,ic_cod_fam,,Full table replacement recommended. Simple and reliable approach
+pie_subfamilias,FULL_REPLACE,HIGH,5,45,,"ic_cod_fam, ic_cod_sub",,Full table replacement recommended. Simple and reliable approach
+pie_subfamilias_dto,FULL_REPLACE,HIGH,5,88,,"ic_cod_ofi, ic_cod_fam, ic_cod_sub",,Full table replacement recommended. Simple and reliable approach
+piezas_1,INCREMENTAL_PREFERRED,HIGH,75,378719,fecha_pmp,cc_cod_pie,fecha_pmp,Implement incremental loading using 'fecha_pmp' as watermark column. Query: SELECT * FROM table WHERE fecha_pmp > last_run_timestamp
+piezas_2,INCREMENTAL_PREFERRED,HIGH,75,389345,fecha_pmp,cc_cod_pie,fecha_pmp,Implement incremental loading using 'fecha_pmp' as watermark column. Query: SELECT * FROM table WHERE fecha_pmp > last_run_timestamp
+piezas_4,INCREMENTAL_PREFERRED,HIGH,75,318588,fecha_pmp,cc_cod_pie,fecha_pmp,Implement incremental loading using 'fecha_pmp' as watermark column. Query: SELECT * FROM table WHERE fecha_pmp > last_run_timestamp
+piezas_com,FULL_REPLACE,HIGH,5,2688,,"cc_cod_pie, cc_pie_com",,Full table replacement recommended. Simple and reliable approach
+piezas_ent_pro,FULL_REPLACE,HIGH,5,3,,"cc_cod_pie, ic_cod_pro, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+piezas_lin,FULL_REPLACE,HIGH,5,58,,"cc_cod_pie, ic_cod_ofi, ic_linea",,Full table replacement recommended. Simple and reliable approach
+pro,FULL_REPLACE,HIGH,15,52,,ic_cod_pro,,Full table replacement recommended. Simple and reliable approach
+programacion,INCREMENTAL_PREFERRED,HIGH,90,5630,fecha,"ic_cod_pro, ic_cod_ofi","fecha, fecha1, fecha2, fecha_prevista_entrada, fecha_prevista_salida",Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+prueba,FULL_REPLACE,HIGH,15,0,,cc_code,,Full table replacement recommended. Simple and reliable approach
+ra_definicion,INCREMENTAL_POSSIBLE,MEDIUM,40,93,,id,,Incremental loading possible but may require custom logic or composite keys
+rea,FULL_REPLACE,HIGH,5,1043,,"ic_ano, ic_cod_rea, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+rem_lin_his,INCREMENTAL_CHALLENGING,MEDIUM,25,0,,"ic_cod_cli, fc_fecha",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+rem_lin_his_,INCREMENTAL_CHALLENGING,MEDIUM,25,0,,"ic_cod_cli, fc_fecha",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+rem_lineas,FULL_REPLACE,HIGH,5,42450,,"ic_ano, ic_cod_rem, ic_cod_ofi, ic_vto_ano, ic_vto_cod, ic_vto_ofi",,Full table replacement recommended. Simple and reliable approach
+rem_lineas_,FULL_REPLACE,HIGH,5,5831,,"ic_ano, ic_cod_rem, ic_vto_ano, ic_vto_cod, ic_vto_ofi, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+remesas,FULL_REPLACE,HIGH,5,9031,,"ic_ano, ic_cod_rem, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+remesas_,FULL_REPLACE,HIGH,5,305,,"ic_ano, ic_cod_rem, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+repair_history,INCREMENTAL_POSSIBLE,MEDIUM,60,154,,ic_code,,Incremental loading possible but may require custom logic or composite keys
+repair_history_lin,INCREMENTAL_CHALLENGING,MEDIUM,25,1159,,"ic_code, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+seg_accesos,FULL_REPLACE,HIGH,5,137631,,"ic_cod_ofi, ic_cod_usu, ic_linea, f_fecha",,Full table replacement recommended. Simple and reliable approach
+seg_accesos_fichar,FULL_REPLACE,HIGH,5,185,,"ic_cod_ofi, ic_cod_usu, ic_linea, f_fecha",,Full table replacement recommended. Simple and reliable approach
+seg_accesos_planificador,FULL_REPLACE,HIGH,5,9452,,"ic_cod_ofi, ic_cod_usu, ic_linea, f_fecha",,Full table replacement recommended. Simple and reliable approach
+seg_accesos_tareas,FULL_REPLACE,HIGH,5,6626,,"ic_cod_ofi, ic_cod_usu, ic_linea, f_fecha",,Full table replacement recommended. Simple and reliable approach
+seg_acciones,FULL_REPLACE,HIGH,15,11,,ic_code,,Full table replacement recommended. Simple and reliable approach
+seg_com_fam,FULL_REPLACE,HIGH,15,14,,ic_cod_fam,,Full table replacement recommended. Simple and reliable approach
+seg_com_gru,FULL_REPLACE,HIGH,5,230,,"ic_cod_com, ic_cod_gru",,Full table replacement recommended. Simple and reliable approach
+seg_comandos,FULL_REPLACE,HIGH,15,69,,ic_cod_com,,Full table replacement recommended. Simple and reliable approach
+seg_grupos,FULL_REPLACE,HIGH,15,7,,ic_cod_gru,,Full table replacement recommended. Simple and reliable approach
+seg_modulos,FULL_REPLACE,HIGH,15,14,,ic_code,,Full table replacement recommended. Simple and reliable approach
+seg_ofi_tip,FULL_REPLACE,HIGH,15,1,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+seg_oficina,FULL_REPLACE,HIGH,15,4,,ic_cod_ofi,,Full table replacement recommended. Simple and reliable approach
+seg_token,INCREMENTAL_PREFERRED,HIGH,100,3135,f_fecha_in,ic_codigo,"f_fecha_in, f_fecha_expired",Implement incremental loading using 'f_fecha_in' as watermark column. Query: SELECT * FROM table WHERE f_fecha_in > last_run_timestamp
+seg_usu_permisos,FULL_REPLACE,HIGH,5,1741,,"ic_tipo, ic_cod_usu, ic_cod_ofi, ic_code",,Full table replacement recommended. Simple and reliable approach
+seg_usuarios,FULL_REPLACE,HIGH,5,176,,"ic_cod_usu, i_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+seg_usuarios_ausencias,INCREMENTAL_POSSIBLE,MEDIUM,65,7,fecha,"ic_code, ic_cod_usu, ic_cod_ofi","fecha, fecha1, fecha2",Incremental loading feasible with 'fecha'. Consider data volume and update patterns to decide vs full replace
+seg_usuarios_ausencias_tipos,FULL_REPLACE,HIGH,0,2,,ic_cod_tip,,Full table replacement recommended. Simple and reliable approach
+seg_usuarios_horarios,INCREMENTAL_POSSIBLE,MEDIUM,65,32724,fecha,"ic_code, ic_cod_usu, ic_cod_ofi","fecha, fechaini1, fechafin1, fechaini2, fechafin2",Incremental loading feasible with 'fecha'. Consider data volume and update patterns to decide vs full replace
+soap_price_list,INCREMENTAL_PREFERRED,HIGH,75,440657,f_fecha,cc_MaterialNo,f_fecha,Implement incremental loading using 'f_fecha' as watermark column. Query: SELECT * FROM table WHERE f_fecha > last_run_timestamp
+soap_price_list_versiones,INCREMENTAL_PREFERRED,HIGH,100,12,f_fecha,id,f_fecha,Implement incremental loading using 'f_fecha' as watermark column. Query: SELECT * FROM table WHERE f_fecha > last_run_timestamp
+soap_service,FULL_REPLACE,HIGH,5,55,,"ic_cod_ofi, cc_field",,Full table replacement recommended. Simple and reliable approach
+tareas,INCREMENTAL_POSSIBLE,MEDIUM,65,22879,fecha,"ic_cod_tar, ic_cod_ofi, ic_linea","fecha, f_fec_ini, f_fec_fin, f_fec_cierre",Incremental loading feasible with 'fecha'. Consider data volume and update patterns to decide vs full replace
+tareas_estados,FULL_REPLACE,HIGH,0,3,,ic_cod_est,,Full table replacement recommended. Simple and reliable approach
+tareas_tipos,INCREMENTAL_CHALLENGING,MEDIUM,25,49,,ic_cod_tar,,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+tareas_tipos_lineas,FULL_REPLACE,HIGH,15,6,,"ic_cod_tar, ic_linea",,Full table replacement recommended. Simple and reliable approach
+token_byVIN,INCREMENTAL_PREFERRED,HIGH,90,761,fecha,"ic_codigo, ic_tipo, cc_bastidor",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+tramos_margen,FULL_REPLACE,HIGH,15,5,,ic_cod_tra,,Full table replacement recommended. Simple and reliable approach
+veh_tip_con,INCREMENTAL_POSSIBLE,MEDIUM,40,4,,ic_cod_tip,,Incremental loading possible but may require custom logic or composite keys
+vehiculos,INCREMENTAL_POSSIBLE,MEDIUM,65,13969,f_last_leido,"cc_cod_mat, ic_cod_cli, ic_cod_ofi",f_last_leido,Incremental loading feasible with 'f_last_leido'. Consider data volume and update patterns to decide vs full replace
+vista_movimientos_historicos,INCREMENTAL_PREFERRED,HIGH,75,165018,fecha,,fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+vto_cli,FULL_REPLACE,HIGH,5,50270,,"ic_ano, ic_cod_vto, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+vto_cli_fac,INCREMENTAL_CHALLENGING,MEDIUM,20,68190,,"ic_vto_ano, ic_vto_cod, ic_vto_ofi, ic_fac_ano, ic_fac_ofi, ic_fac_let, ic_fac_cod",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+vto_cli_his,INCREMENTAL_CHALLENGING,MEDIUM,25,819,,"ic_ano, ic_cod_vto, ic_cod_ofi, ic_linea",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large
+vto_cli_his_agru,INCREMENTAL_PREFERRED,HIGH,85,11995,fecha,"ic_ano, ic_cod_vto, ic_cod_ofi, ic_fac_ano, ic_fac_cod, ic_fac_let, ic_fac_ofi, f_fecha, f_fec_ini",fecha,Implement incremental loading using 'fecha' as watermark column. Query: SELECT * FROM table WHERE fecha > last_run_timestamp
+vto_pro,FULL_REPLACE,HIGH,5,16461,,"ic_ano, ic_cod_vto, ic_cod_ofi",,Full table replacement recommended. Simple and reliable approach
+vto_pro_fac,INCREMENTAL_CHALLENGING,MEDIUM,20,25530,,"ic_vto_ano, ic_vto_cod, ic_vto_ofi, ic_fac_ano, ic_fac_ofi, ic_fac_let, ic_fac_cod",,Incremental loading technically possible but may be complex. Consider full replace unless table is very large

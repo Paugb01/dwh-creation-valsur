@@ -1,31 +1,44 @@
 # MySQL to GCP Data Pipeline - Version 2.0
 
-A production-ready, modular data pipeline that extracts data from MySQL databases and loads it to Google Cloud Platform with intelligent incremental loading capabilities.
+A production-ready, modular data pipeline that extracts data from MySQL databases and loads it to Google Cloud Platform with intelligent incremental loading capabilities and automated strategy optimization.
 
 ## 🚀 Features
 
-- **🔄 Incremental Loading**: Only extracts new/changed data based on timestamp columns
-- **📊 Multi-table Support**: Handles all 220+ tables in your database efficiently
+- **🎯 Smart Loading Strategy**: Auto-analyzes 220+ tables to determine optimal incremental vs full loading
+- **🔄 Intelligent Incremental Loading**: Extracts only new/changed data using watermark columns
+- **📊 Comprehensive Analysis**: Built-in database documentation and loading strategy recommendations
 - **☁️ Cloud Integration**: Automatic upload to Google Cloud Storage with proper partitioning
 - **🏗️ Modular Architecture**: Clean, organized codebase with reusable components
 - **🔐 Enterprise Security**: Proper credential management and Git safety
 - **📈 Production Ready**: Comprehensive logging, error handling, and monitoring
 - **🧪 Well Tested**: Extensive testing with 400K+ records processed successfully
 
-## 📁 Project Structure
+## 🆕 Recent Updates (August 2025)
+
+- **📊 Incremental Loading Analyzer**: New tool analyzes all tables and recommends loading strategies
+- **🎯 Strategy Optimization**: 63 tables identified for incremental loading (29% of database)
+- **� Implementation Guides**: Auto-generated documentation with SQL examples
+- **⚡ Performance Boost**: Up to 90% reduction in data transfer for suitable tables
+
+## �📁 Project Structure
 
 ```
 pruebas-dwh/
-├── config/           # 🔧 Configuration files (settings + secrets)
-├── extractors/       # 📊 Modular data extraction components  
-├── scripts/          # 🔄 Automation and utility scripts
-├── docs/            # 📚 Comprehensive documentation
-├── .keys/           # 🔐 Secure credential storage
-├── logs/            # 📝 Application logging
-└── extracted_data/  # 💾 Local bronze layer
+├── config/                      # 🔧 Configuration files (settings + secrets)
+├── extractors/                  # 📊 Modular data extraction components  
+├── scripts/                     # 🔄 Automation and utility scripts
+│   ├── quick_database_documenter.py  # 🎯 NEW: Incremental strategy analyzer
+│   ├── daily_pipeline.py             # 🚀 Main execution pipeline
+│   └── test_*.py                      # 🧪 Testing utilities
+├── docs/                        # 📚 Comprehensive documentation
+│   ├── database_documentation/  # 📊 NEW: Analysis reports and guides
+│   └── *.md                     # 📝 Setup and usage guides
+├── .keys/                       # 🔐 Secure credential storage
+├── logs/                        # 📝 Application logging
+└── extracted_data/              # 💾 Local bronze layer
 ```
 
-For detailed structure see: [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
+For detailed organization see: [docs/PROJECT_ORGANIZATION.md](docs/PROJECT_ORGANIZATION.md)
 
 ## 🔧 Quick Start
 
@@ -47,7 +60,16 @@ python extractors/simple_extractor.py
 python scripts/test_incremental.py
 ```
 
-### 3. Production Extraction
+### 3. Analyze Loading Strategies (NEW)
+```bash
+# Analyze all tables for optimal loading strategy
+python scripts/quick_database_documenter.py
+
+# Review generated recommendations
+# Check: docs/database_documentation/incremental_loading_guide_*.md
+```
+
+### 4. Production Extraction
 ```bash
 # Run batch extraction (all tables)
 python extractors/batch_extractor.py
@@ -56,13 +78,42 @@ python extractors/batch_extractor.py
 python scripts/daily_pipeline.py
 ```
 
-## 🏗️ Architecture Components
+## � Incremental Loading Analysis
+
+The project now includes an intelligent analysis system that examines all database tables to recommend optimal loading strategies:
+
+### Analysis Results
+- **Total Tables**: 220
+- **Incremental Candidates**: 63 tables (29%)
+- **High-Confidence Candidates**: 26 tables
+- **Performance Improvement**: Up to 90% reduction in data transfer
+
+### Generated Documentation
+- **Excel Analysis**: Complete table-by-table recommendations
+- **Implementation Guide**: SQL examples and best practices  
+- **CSV Exports**: Detailed data for custom analysis
+
+### Usage
+```bash
+# Run the analyzer
+python scripts/quick_database_documenter.py
+
+# Review results in docs/database_documentation/
+# - incremental_loading_analysis_*.xlsx (detailed analysis)
+# - incremental_loading_guide_*.md (implementation guide)
+```
+
+## �🏗️ Architecture Components
 
 ### Core Extractors
 - **BaseExtractor**: Common functionality (connections, storage, logging)
 - **SimpleExtractor**: Basic table extraction for testing
 - **IncrementalExtractor**: Smart watermark-based incremental loading  
 - **BatchExtractor**: Production-scale multi-table processing
+
+### Analysis Tools
+- **IncrementalLoadingDocumenter**: Analyzes tables for loading strategy optimization
+- **DatabaseDocumenter**: Comprehensive database schema documentation
 
 ### Configuration System
 - **config/config.json**: Application settings (safe to commit)

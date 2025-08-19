@@ -1,0 +1,221 @@
+table_name,engine,row_count,estimated_rows,data_length,index_length,auto_increment,create_time,update_time,table_comment,avg_row_length,table_collation,data_size_mb,index_size_mb
+Pie_Fac,Unknown,107634,0,0,0,,,,VIEW,0,,0.0,0.0
+Pie_Fac_ML,Unknown,107634,0,0,0,,,,VIEW,0,,0.0,0.0
+Recambios,Unknown,22,0,0,0,,,,VIEW,0,,0.0,0.0
+accesos_presencia,InnoDB,10944,5573,294912,0,10945.0,2025-03-10 19:18:35,2025-08-19 07:54:58,,52,utf8_general_ci,0.28,0.0
+agenda,InnoDB,302,302,65536,16384,,2024-10-28 15:58:42,2025-08-19 08:02:28,,217,latin1_swedish_ci,0.06,0.02
+agenda_usuarios,InnoDB,820,852,65536,0,2025.0,2023-05-09 06:42:27,,,76,latin1_swedish_ci,0.06,0.0
+alb_cli,InnoDB,20606,12162,33046528,0,,2023-05-09 06:42:27,2025-08-19 08:01:35,,2717,latin1_swedish_ci,31.52,0.0
+alb_cli_lin,InnoDB,44025,28737,5783552,0,,2023-05-09 06:42:27,2025-08-19 08:01:35,,201,latin1_swedish_ci,5.52,0.0
+alb_pro,InnoDB,85622,47015,7880704,0,,2023-05-09 06:42:27,2025-08-19 07:59:51,,167,latin1_swedish_ci,7.52,0.0
+alb_pro_lin,InnoDB,124336,124336,22609920,0,,2023-05-09 06:42:27,2025-08-19 07:59:50,,181,latin1_swedish_ci,21.56,0.0
+alm,InnoDB,40,27,16384,0,,2023-05-09 06:42:27,2025-02-06 09:24:55,,606,latin1_swedish_ci,0.02,0.0
+alm_coste,InnoDB,16149,16079,2637824,0,,2023-05-09 06:42:27,,,164,latin1_swedish_ci,2.52,0.0
+alm_his_1,InnoDB,306596,306596,72024064,43155456,,2025-08-12 15:17:35,2025-08-19 08:02:37,,234,latin1_swedish_ci,68.69,41.16
+alm_his_2,InnoDB,164976,164976,67780608,36831232,,2025-08-11 11:56:51,2025-08-19 08:01:35,,410,latin1_swedish_ci,64.64,35.12
+alm_his_4,InnoDB,0,0,16384,0,,2024-12-04 19:01:42,,,0,latin1_swedish_ci,0.02,0.0
+alm_lug_alt,InnoDB,278,224,16384,0,,2023-05-09 06:42:27,,,73,latin1_swedish_ci,0.02,0.0
+alm_lug_caj,InnoDB,201,160,16384,0,,2023-05-09 06:42:27,,,102,latin1_swedish_ci,0.02,0.0
+alm_lug_est,InnoDB,278,213,16384,0,,2023-05-09 06:42:27,,,76,latin1_swedish_ci,0.02,0.0
+alm_lug_mod,InnoDB,402,403,49152,0,,2023-05-09 06:42:27,,,121,latin1_swedish_ci,0.05,0.0
+alm_mov,InnoDB,7,7,16384,0,,2023-05-09 06:42:27,,,2340,latin1_swedish_ci,0.02,0.0
+alm_ofi,InnoDB,160,160,16384,0,,2023-05-09 06:42:27,2025-05-16 09:35:16,,102,latin1_swedish_ci,0.02,0.0
+alm_pie_1,InnoDB,105132,96240,8929280,3686400,,2025-08-12 15:17:37,2025-08-19 08:02:37,,92,latin1_swedish_ci,8.52,3.52
+alm_pie_2,InnoDB,40509,24459,4702208,1589248,,2025-08-11 11:56:52,2025-08-19 08:01:35,,192,latin1_swedish_ci,4.48,1.52
+alm_pie_4,InnoDB,0,0,16384,0,,2024-12-04 19:02:05,,,0,latin1_swedish_ci,0.02,0.0
+audit_errores,InnoDB,0,0,16384,0,54.0,2025-07-02 09:53:15,,,0,utf8mb4_general_ci,0.02,0.0
+audit_ia,InnoDB,15365,5368,1589248,0,15366.0,2025-02-13 16:50:53,2025-08-19 08:02:10,,296,latin1_swedish_ci,1.52,0.0
+audit_ia_tipo,InnoDB,2,2,16384,0,3.0,2025-02-03 17:00:05,2025-02-03 17:00:06,,8192,latin1_swedish_ci,0.02,0.0
+avi_comen,InnoDB,67288,16084,5652480,0,,2023-05-09 06:42:27,2025-08-19 08:01:30,,351,latin1_swedish_ci,5.39,0.0
+avi_comen_rec,InnoDB,8523,3193,1507328,0,,2023-11-14 08:02:55,2025-08-19 07:51:33,,472,latin1_swedish_ci,1.44,0.0
+avi_comen_rec_est,InnoDB,13,12,16384,0,,2023-10-26 12:09:58,,,1365,latin1_swedish_ci,0.02,0.0
+avi_comen_rec_his_dev,InnoDB,173,87,16384,0,174.0,2023-11-14 08:01:14,2025-08-05 14:19:06,,188,latin1_swedish_ci,0.02,0.0
+avi_comen_rec_his_est,InnoDB,23390,10700,1589248,0,23391.0,2023-10-26 12:09:58,2025-08-19 07:51:33,,148,latin1_swedish_ci,1.52,0.0
+avi_comen_rec_pri,InnoDB,3,2,16384,0,,2023-10-26 12:09:58,,,8192,latin1_swedish_ci,0.02,0.0
+avi_comen_rec_tip,InnoDB,2,2,16384,0,,2023-11-08 19:09:24,,,8192,latin1_swedish_ci,0.02,0.0
+avi_estados,InnoDB,9,6,16384,0,12.0,2023-05-09 06:42:27,2025-03-06 15:47:50,,2730,latin1_swedish_ci,0.02,0.0
+avi_gar,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+avi_his_est,InnoDB,163017,37582,3686400,0,163018.0,2023-06-29 10:13:49,2025-08-19 08:02:29,,98,latin1_swedish_ci,3.52,0.0
+avi_his_porcentajes,InnoDB,3560,2252,163840,0,3561.0,2025-03-06 15:48:10,2025-08-19 08:02:27,,72,latin1_swedish_ci,0.16,0.0
+avi_his_revisiones,InnoDB,74391,13294,1589248,0,74392.0,2023-08-02 13:38:30,2025-08-19 08:02:42,,119,latin1_swedish_ci,1.52,0.0
+avi_hor_fac,InnoDB,108326,81441,5783552,0,,2023-09-13 15:50:46,2025-08-19 08:02:31,,71,latin1_swedish_ci,5.52,0.0
+avi_horas,InnoDB,308094,308094,23658496,0,,2023-05-09 06:42:27,2025-08-19 08:02:29,,76,latin1_swedish_ci,22.56,0.0
+avi_jobs,InnoDB,19,19,16384,0,,2023-05-09 06:42:27,,,862,latin1_swedish_ci,0.02,0.0
+avi_lineas,InnoDB,373431,373431,94027776,0,,2024-09-25 10:15:55,2025-08-19 08:02:37,,251,latin1_swedish_ci,89.67,0.0
+avi_lineas_,InnoDB,29755,22932,5783552,0,,2024-09-25 10:15:55,2025-08-18 14:05:35,,252,latin1_swedish_ci,5.52,0.0
+avi_meta,InnoDB,57784,40679,13156352,0,,2023-05-09 06:42:27,2025-08-19 08:02:37,,323,latin1_swedish_ci,12.55,0.0
+avi_motivos_parada,InnoDB,4,4,16384,0,5.0,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+avi_obs,InnoDB,252741,252741,21561344,0,,2023-08-04 11:58:51,2025-08-19 08:02:24,,85,latin1_swedish_ci,20.56,0.0
+avi_obs_,InnoDB,5596,4798,409600,0,,2024-09-12 10:34:40,2025-08-18 12:11:43,,85,latin1_swedish_ci,0.39,0.0
+avi_tip_fic,InnoDB,18,18,16384,0,,2023-05-09 06:42:27,,,910,latin1_swedish_ci,0.02,0.0
+avi_tipos,InnoDB,20,20,16384,0,,2023-11-15 18:05:15,,,819,latin1_swedish_ci,0.02,0.0
+avisos,InnoDB,81032,76199,1556692992,2637824,,2025-03-06 15:48:10,2025-08-19 08:02:42,,20429,latin1_swedish_ci,1484.58,2.52
+avisos_,InnoDB,4362,2018,360448,0,,2023-05-09 06:42:27,2025-08-18 14:05:35,,178,latin1_swedish_ci,0.34,0.0
+bancos,InnoDB,12,11,16384,0,,2024-04-25 10:33:39,,,1489,latin1_swedish_ci,0.02,0.0
+bd_config_planificador,InnoDB,4,4,16384,0,,2023-05-23 16:47:36,,,4096,latin1_swedish_ci,0.02,0.0
+bd_config_tareas,InnoDB,4,4,16384,0,,2023-05-23 16:47:06,,,4096,latin1_swedish_ci,0.02,0.0
+campanas,InnoDB,3,1,16384,0,,2024-09-25 10:15:41,2025-07-28 08:49:29,,16384,latin1_swedish_ci,0.02,0.0
+campanas_lineas,InnoDB,2,2,16384,0,,2024-09-25 10:15:46,,,8192,latin1_swedish_ci,0.02,0.0
+categorias,InnoDB,27,27,16384,0,,2023-05-09 06:42:27,,,606,latin1_swedish_ci,0.02,0.0
+con_diario,InnoDB,302060,302060,37322752,0,,2023-05-09 06:42:27,2025-08-19 07:35:21,,123,latin1_swedish_ci,35.59,0.0
+con_letras,InnoDB,15,13,16384,0,,2023-05-09 06:42:27,,,1260,latin1_swedish_ci,0.02,0.0
+con_subctas,InnoDB,172,172,49152,0,,2023-05-09 06:42:27,,,285,latin1_swedish_ci,0.05,0.0
+con_tipos,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+con_tmp,InnoDB,58,58,16384,0,,2023-05-09 06:42:27,2025-08-19 07:35:19,,282,latin1_swedish_ci,0.02,0.0
+contratos,InnoDB,15297,5594,404242432,0,,2023-05-09 06:42:27,2025-08-19 08:02:37,,72263,latin1_swedish_ci,385.52,0.0
+contratos_estados,InnoDB,6,5,16384,0,,2024-06-05 13:47:33,2025-03-06 15:47:50,,3276,latin1_swedish_ci,0.02,0.0
+contratos_insertar,InnoDB,918,846,65536,0,,2023-12-05 10:38:05,,,77,latin1_swedish_ci,0.06,0.0
+contratos_log,InnoDB,3724,2737,31997952,0,3726.0,2023-05-09 06:42:27,2025-08-12 08:28:10,,11690,latin1_swedish_ci,30.52,0.0
+contratos_ra,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+contratos_ra_lineas,InnoDB,139581,139581,21561344,0,,2023-05-09 06:42:27,2025-08-19 08:02:14,,154,latin1_swedish_ci,20.56,0.0
+danos_jobs,InnoDB,9,9,16384,0,,2024-08-01 18:53:03,,,1820,latin1_swedish_ci,0.02,0.0
+danos_subzonas,InnoDB,406,437,65536,0,,2024-07-10 18:24:24,,,149,latin1_swedish_ci,0.06,0.0
+danos_zonas,InnoDB,80,90,16384,0,,2024-07-10 18:24:24,,,182,latin1_swedish_ci,0.02,0.0
+danos_zonas_lineas,InnoDB,1220,1225,114688,0,,2024-07-10 18:24:24,,,93,latin1_swedish_ci,0.11,0.0
+docs,InnoDB,5358,2315,229376,0,,2023-05-09 06:42:27,2025-08-19 07:57:41,,99,latin1_swedish_ci,0.22,0.0
+docs_albcli,InnoDB,168,83,16384,0,,2023-05-09 06:42:27,2025-08-18 13:43:36,,197,latin1_swedish_ci,0.02,0.0
+docs_albpro,InnoDB,2,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+docs_comu,InnoDB,4,4,16384,0,,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+docs_pro,InnoDB,61,36,16384,0,,2023-05-09 06:42:27,2025-08-12 13:37:25,,455,latin1_swedish_ci,0.02,0.0
+docs_tipos,InnoDB,6,5,16384,0,,2023-05-09 06:42:27,,,3276,latin1_swedish_ci,0.02,0.0
+dto_cli_fam,InnoDB,581,568,49152,0,,2023-05-09 06:42:27,2025-08-14 08:24:22,,86,latin1_swedish_ci,0.05,0.0
+dto_cli_pie,InnoDB,228,200,16384,0,,2023-05-09 06:42:27,2025-08-18 11:50:40,,81,latin1_swedish_ci,0.02,0.0
+dto_cli_sub_fam,InnoDB,2,2,16384,0,,2023-05-09 06:42:27,,,8192,latin1_swedish_ci,0.02,0.0
+dto_cli_tipos,InnoDB,18,15,16384,0,,2023-05-09 06:42:27,2025-04-01 13:00:58,,1092,latin1_swedish_ci,0.02,0.0
+dto_cli_tipos_fam,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+dto_cli_tipos_margen,InnoDB,0,0,16384,0,,2023-08-31 11:57:54,,,0,latin1_swedish_ci,0.02,0.0
+dto_cli_tipos_pie,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+dto_cli_tipos_sub_fam,InnoDB,491,466,49152,0,,2023-05-09 06:42:27,2025-04-01 13:44:19,,105,latin1_swedish_ci,0.05,0.0
+dto_cli_tramos,InnoDB,0,0,16384,0,,2023-09-04 10:50:58,,,0,latin1_swedish_ci,0.02,0.0
+ent_cli,InnoDB,5340,5240,1589248,0,,2025-05-02 10:44:30,2025-08-19 07:59:32,,303,latin1_swedish_ci,1.52,0.0
+ent_cli_ban,InnoDB,0,0,16384,0,1.0,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+ent_cli_blo,InnoDB,2390,1640,229376,0,,2023-05-09 06:42:27,2025-08-19 06:56:24,,139,latin1_swedish_ci,0.22,0.0
+ent_cli_com,InnoDB,1160,796,131072,0,,2023-05-09 06:42:27,2025-08-18 06:45:10,,164,latin1_swedish_ci,0.12,0.0
+ent_cli_con,InnoDB,763,366,65536,0,,2023-05-09 06:42:27,2025-08-19 07:58:30,,179,latin1_swedish_ci,0.06,0.0
+ent_cli_des,InnoDB,102,102,16384,0,,2023-05-09 06:42:27,,,160,latin1_swedish_ci,0.02,0.0
+ent_cli_doc,InnoDB,2777,1908,180224,0,,2023-05-09 06:42:27,2025-08-18 10:55:54,,94,latin1_swedish_ci,0.17,0.0
+ent_cli_doc_tip,InnoDB,7,6,16384,0,,2023-05-09 06:42:27,,,2730,latin1_swedish_ci,0.02,0.0
+ent_cli_fam,InnoDB,8,7,16384,0,,2023-05-09 06:42:27,,,2340,latin1_swedish_ci,0.02,0.0
+ent_cli_fam_des,InnoDB,8,8,16384,0,,2023-05-09 06:42:27,,,2048,latin1_swedish_ci,0.02,0.0
+ent_cli_origen,InnoDB,11,10,16384,0,12.0,2023-05-09 06:42:27,,,1638,latin1_swedish_ci,0.02,0.0
+ent_cli_rie,InnoDB,5215,3819,458752,0,,2023-05-09 06:42:27,2025-08-19 08:02:37,,120,latin1_swedish_ci,0.44,0.0
+ent_pro,InnoDB,1540,884,196608,0,,2023-05-09 06:42:27,2025-08-18 14:32:38,,222,latin1_swedish_ci,0.19,0.0
+ent_pro_blo,InnoDB,14,8,16384,0,,2023-05-09 06:42:27,2025-07-16 12:34:51,,2048,latin1_swedish_ci,0.02,0.0
+ent_pro_fam,InnoDB,1,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+errores_ia,InnoDB,622,354,65536,0,623.0,2025-02-13 16:46:29,2025-08-19 07:41:43,,185,latin1_swedish_ci,0.06,0.0
+fac_cli,InnoDB,83958,54189,13156352,0,,2023-05-09 06:42:27,2025-08-19 07:41:10,,242,latin1_swedish_ci,12.55,0.0
+fac_cli_aut,InnoDB,36553,27619,5783552,0,,2023-05-09 06:42:27,2025-08-12 09:27:09,,209,latin1_swedish_ci,5.52,0.0
+fac_cli_est,InnoDB,3,3,16384,0,,2023-05-09 06:42:27,,,5461,latin1_swedish_ci,0.02,0.0
+fac_cli_firmas,InnoDB,26366,25347,4718592,0,,2023-05-09 06:42:27,2025-08-19 06:59:01,,186,latin1_swedish_ci,4.5,0.0
+fac_cli_lin,InnoDB,101448,60103,11059200,2637824,,2023-05-09 06:42:27,2025-08-19 07:40:51,,184,latin1_swedish_ci,10.55,2.52
+fac_pro,InnoDB,26590,10647,2637824,0,,2023-05-09 06:42:27,2025-08-19 06:54:36,,247,latin1_swedish_ci,2.52,0.0
+fac_pro_est,InnoDB,3,3,16384,0,,2023-05-09 06:42:27,,,5461,latin1_swedish_ci,0.02,0.0
+fac_pro_lin,InnoDB,86258,68083,9977856,0,,2023-05-09 06:42:27,2025-08-19 06:53:54,,146,latin1_swedish_ci,9.52,0.0
+fields_gauges,InnoDB,10,10,16384,0,71.0,2023-05-09 06:42:27,,,1638,utf8_general_ci,0.02,0.0
+fields_typ_operators,InnoDB,10,10,16384,0,61.0,2023-05-09 06:42:27,,,1638,utf8_general_ci,0.02,0.0
+fields_types,InnoDB,8,8,16384,0,61.0,2023-05-09 06:42:27,,,2048,utf8_general_ci,0.02,0.0
+firmas,InnoDB,48,48,16384,0,2017.0,2023-05-09 06:42:27,,,341,latin1_swedish_ci,0.02,0.0
+for_pago,InnoDB,36,31,16384,0,,2023-05-09 06:42:27,2025-03-06 13:13:46,,528,latin1_swedish_ci,0.02,0.0
+for_pago2,InnoDB,24,22,16384,0,,2023-05-09 06:42:27,,,744,latin1_swedish_ci,0.02,0.0
+garantias,InnoDB,3113,3113,442368,0,,2023-05-09 06:42:27,,,142,latin1_swedish_ci,0.42,0.0
+gh_acciones,InnoDB,0,0,16384,0,1.0,2024-05-03 15:22:58,,,0,latin1_swedish_ci,0.02,0.0
+gh_estados,InnoDB,3,3,16384,0,,2024-05-03 15:22:58,,,5461,latin1_swedish_ci,0.02,0.0
+gh_estados_devolucion,InnoDB,3,3,16384,0,,2024-05-03 15:22:58,,,5461,latin1_swedish_ci,0.02,0.0
+gh_historico_acciones,InnoDB,2000,890,98304,0,2001.0,2024-05-03 15:22:58,2025-08-19 08:02:39,,110,latin1_swedish_ci,0.09,0.0
+gh_lista_espera,InnoDB,2,2,16384,0,,2024-05-03 15:22:58,2025-08-19 07:34:41,,8192,latin1_swedish_ci,0.02,0.0
+gh_piezas,InnoDB,128,115,49152,0,,2024-05-08 17:18:05,2025-06-16 09:52:33,,427,latin1_swedish_ci,0.05,0.0
+gh_piezas_lineas,InnoDB,128,116,16384,0,,2024-05-03 15:22:58,2025-08-19 08:02:39,,141,latin1_swedish_ci,0.02,0.0
+jobs_carpetas,InnoDB,100,91,16384,0,,2023-05-09 06:42:27,,,180,latin1_swedish_ci,0.02,0.0
+jobs_maestras,InnoDB,2,2,16384,0,,2023-05-09 06:42:27,,,8192,latin1_swedish_ci,0.02,0.0
+mae_carpetas,InnoDB,4,4,16384,0,41.0,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+mae_ficheros,InnoDB,27,17,16384,0,28.0,2023-05-09 06:42:27,,,963,latin1_swedish_ci,0.02,0.0
+mae_tables,InnoDB,18,18,16384,0,11111.0,2023-05-09 06:42:27,,,910,utf8_general_ci,0.02,0.0
+mae_tables_family,InnoDB,9,9,16384,0,113.0,2023-05-09 06:42:27,,,1820,latin1_swedish_ci,0.02,0.0
+mae_tables_fields,InnoDB,203,203,16384,0,11111.0,2023-05-09 06:42:27,,,80,utf8_general_ci,0.02,0.0
+mae_tables_fields_groupby,InnoDB,0,0,16384,0,1.0,2023-05-09 06:42:27,,,0,utf8_general_ci,0.02,0.0
+mae_tables_fields_usu_field,InnoDB,136,136,16384,0,11111.0,2023-05-09 06:42:27,,,120,utf8_general_ci,0.02,0.0
+mae_tables_fields_usu_order,InnoDB,14,14,16384,0,11111.0,2023-05-09 06:42:27,,,1170,utf8_general_ci,0.02,0.0
+mae_views,InnoDB,0,0,16384,0,1.0,2023-05-09 06:42:27,,,0,utf8_general_ci,0.02,0.0
+mae_views_fields,InnoDB,0,0,16384,0,1.0,2023-05-09 06:42:27,,,0,utf8_general_ci,0.02,0.0
+mae_views_where,InnoDB,0,0,16384,0,1.0,2023-05-09 06:42:27,,,0,utf8_general_ci,0.02,0.0
+marcas,InnoDB,74,55,16384,0,,2023-05-09 06:42:27,2025-06-05 12:11:47,,297,latin1_swedish_ci,0.02,0.0
+margen_cliente,Unknown,0,0,0,0,,,,VIEW,0,,0.0,0.0
+margen_cliente_alb_avi,Unknown,0,0,0,0,,,,VIEW,0,,0.0,0.0
+metacode_actt,InnoDB,705,705,81920,16384,706.0,2023-05-09 06:42:27,,,116,latin1_swedish_ci,0.08,0.02
+metacode_cont,InnoDB,683,683,81920,0,684.0,2023-05-09 06:42:27,,,119,latin1_swedish_ci,0.08,0.0
+metacode_loct,InnoDB,489,489,65536,0,490.0,2023-05-09 06:42:27,,,134,latin1_swedish_ci,0.06,0.0
+metacode_objt,InnoDB,23811,23579,3686400,0,23812.0,2023-05-09 06:42:27,,,156,latin1_swedish_ci,3.52,0.0
+metacode_ran,InnoDB,3185,3185,229376,0,3186.0,2023-05-09 06:42:27,,,72,latin1_swedish_ci,0.22,0.0
+metacode_rea,InnoDB,51545,51879,3686400,0,51546.0,2023-05-09 06:42:27,,,71,latin1_swedish_ci,3.52,0.0
+metacode_text,InnoDB,647283,647283,55132160,0,647012.0,2023-05-09 06:42:27,,,85,latin1_swedish_ci,52.58,0.0
+metacode_val,InnoDB,817778,817778,63537152,123404288,832325.0,2023-05-09 06:42:27,,,77,latin1_swedish_ci,60.59,117.69
+metacode_vrst,InnoDB,709,709,81920,0,710.0,2023-05-09 06:42:27,,,115,latin1_swedish_ci,0.08,0.0
+mostrar_pdf,InnoDB,2543,1951,147456,0,2544.0,2023-05-09 06:42:27,,,75,latin1_swedish_ci,0.14,0.0
+mostrar_pdf_alb,InnoDB,55,42,16384,0,56.0,2023-05-09 06:42:27,,,390,latin1_swedish_ci,0.02,0.0
+mostrar_pdf_con,InnoDB,62,59,16384,0,63.0,2023-05-09 06:42:27,2025-06-27 13:15:12,,277,latin1_swedish_ci,0.02,0.0
+nam_ban,InnoDB,20,19,16384,0,,2024-04-25 13:30:26,,,862,latin1_swedish_ci,0.02,0.0
+ped_pro,InnoDB,79025,64677,11026432,0,,2024-03-13 15:28:39,2025-08-19 08:03:31,,170,latin1_swedish_ci,10.52,0.0
+ped_pro_des,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+ped_pro_est,InnoDB,5,4,16384,0,,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+ped_pro_lin,InnoDB,108172,108172,18399232,0,,2023-05-09 06:42:27,2025-08-19 08:03:31,,170,latin1_swedish_ci,17.55,0.0
+ped_pro_lin_his,InnoDB,4334,2070,196608,0,4347.0,2023-05-09 06:42:27,2025-08-18 08:24:43,,94,latin1_swedish_ci,0.19,0.0
+ped_pro_tip,InnoDB,6,4,16384,0,,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+pie_descuentos,InnoDB,1,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+pie_familias,InnoDB,53,53,16384,0,,2023-09-18 09:33:22,2025-02-04 11:32:24,,309,latin1_swedish_ci,0.02,0.0
+pie_subfamilias,InnoDB,45,45,16384,0,,2023-05-09 06:42:27,2025-02-05 08:58:05,,364,latin1_swedish_ci,0.02,0.0
+pie_subfamilias_dto,InnoDB,88,88,16384,0,,2025-01-01 18:27:18,2025-04-11 11:46:53,,186,latin1_swedish_ci,0.02,0.0
+piezas_1,InnoDB,378719,378719,69861376,0,,2025-07-16 13:08:49,2025-08-19 08:03:09,,184,latin1_swedish_ci,66.62,0.0
+piezas_2,InnoDB,389345,389345,71974912,28393472,,2025-07-16 13:08:53,2025-08-19 07:59:50,,184,latin1_swedish_ci,68.64,27.08
+piezas_4,InnoDB,318588,318588,55164928,24199168,,2025-07-16 13:08:57,2025-07-16 13:10:22,,173,latin1_swedish_ci,52.61,23.08
+piezas_com,InnoDB,2688,1708,131072,0,,2023-05-09 06:42:27,2025-08-18 13:28:08,,76,latin1_swedish_ci,0.12,0.0
+piezas_ent_pro,InnoDB,3,2,16384,0,,2023-05-09 06:42:27,,,8192,latin1_swedish_ci,0.02,0.0
+piezas_lin,InnoDB,58,53,16384,0,,2023-05-09 06:42:27,2025-07-28 12:04:14,,309,latin1_swedish_ci,0.02,0.0
+pro,InnoDB,52,52,16384,0,,2023-05-09 06:42:27,,,315,latin1_swedish_ci,0.02,0.0
+programacion,InnoDB,5630,3511,491520,0,5543.0,2023-05-09 06:42:27,2025-08-19 07:45:08,,139,latin1_swedish_ci,0.47,0.0
+prueba,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+ra_definicion,InnoDB,93,93,16384,0,187.0,2023-05-09 06:42:27,,,176,latin1_swedish_ci,0.02,0.0
+rea,InnoDB,1043,1068,147456,0,,2023-05-09 06:42:27,,,138,latin1_swedish_ci,0.14,0.0
+rem_lin_his,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+rem_lin_his_,InnoDB,0,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+rem_lineas,InnoDB,42450,15258,1589248,0,,2023-05-09 06:42:27,2025-08-19 07:04:59,,104,latin1_swedish_ci,1.52,0.0
+rem_lineas_,InnoDB,5831,2215,196608,0,,2023-05-09 06:42:27,2025-08-18 11:02:15,,88,latin1_swedish_ci,0.19,0.0
+remesas,InnoDB,9031,3525,294912,0,,2023-05-09 06:42:27,2025-08-19 07:08:54,,83,latin1_swedish_ci,0.28,0.0
+remesas_,InnoDB,305,88,16384,0,,2023-05-09 06:42:27,2025-08-18 11:51:20,,186,latin1_swedish_ci,0.02,0.0
+repair_history,InnoDB,154,153,65536,16384,155.0,2023-05-09 06:42:27,,,428,latin1_spanish_ci,0.06,0.02
+repair_history_lin,InnoDB,1159,1158,180224,0,,2023-05-09 06:42:27,,,155,latin1_spanish_ci,0.17,0.0
+seg_accesos,InnoDB,137627,137627,7880704,0,,2023-05-09 06:42:27,2025-08-19 07:41:29,,57,latin1_swedish_ci,7.52,0.0
+seg_accesos_fichar,InnoDB,185,93,16384,0,,2025-03-10 19:19:20,2025-08-14 14:07:18,,176,latin1_swedish_ci,0.02,0.0
+seg_accesos_planificador,InnoDB,9451,2535,311296,0,,2023-05-19 12:23:48,2025-08-19 07:40:34,,122,latin1_swedish_ci,0.3,0.0
+seg_accesos_tareas,InnoDB,6626,2222,196608,0,,2023-05-19 12:23:52,2025-08-19 07:59:12,,88,latin1_swedish_ci,0.19,0.0
+seg_acciones,InnoDB,11,10,16384,0,,2023-05-09 06:42:27,,,1638,latin1_swedish_ci,0.02,0.0
+seg_com_fam,InnoDB,14,14,16384,0,,2023-05-09 06:42:27,,,1170,latin1_swedish_ci,0.02,0.0
+seg_com_gru,InnoDB,230,230,16384,0,,2023-05-09 06:42:27,,,71,latin1_swedish_ci,0.02,0.0
+seg_comandos,InnoDB,69,69,16384,0,,2023-05-09 06:42:27,,,237,latin1_swedish_ci,0.02,0.0
+seg_grupos,InnoDB,7,7,16384,0,,2023-05-09 06:42:27,,,2340,latin1_swedish_ci,0.02,0.0
+seg_modulos,InnoDB,14,14,16384,0,,2023-05-09 06:42:27,,,1170,latin1_swedish_ci,0.02,0.0
+seg_ofi_tip,InnoDB,1,0,16384,0,,2023-05-09 06:42:27,,,0,latin1_swedish_ci,0.02,0.0
+seg_oficina,InnoDB,4,3,16384,0,,2024-04-03 11:31:20,2025-08-11 12:03:40,,5461,latin1_swedish_ci,0.02,0.0
+seg_token,InnoDB,3134,709,180224,0,3135.0,2023-05-09 06:42:27,2025-08-19 07:39:07,,254,utf8mb4_general_ci,0.17,0.0
+seg_usu_permisos,InnoDB,1741,1449,147456,0,,2023-05-09 06:42:27,2025-08-14 14:36:53,,101,latin1_swedish_ci,0.14,0.0
+seg_usuarios,InnoDB,176,166,65536,0,,2025-03-10 19:18:07,2025-08-18 06:44:10,,394,latin1_swedish_ci,0.06,0.0
+seg_usuarios_ausencias,InnoDB,7,6,16384,0,,2023-05-09 06:42:27,,,2730,latin1_swedish_ci,0.02,0.0
+seg_usuarios_ausencias_tipos,InnoDB,2,2,16384,0,,2023-05-09 06:42:27,2025-05-09 11:32:42,,8192,latin1_swedish_ci,0.02,0.0
+seg_usuarios_horarios,InnoDB,32724,34364,3440640,0,,2023-05-09 06:42:27,2025-07-01 12:06:42,,100,latin1_swedish_ci,3.28,0.0
+soap_price_list,InnoDB,440657,440657,96108544,17367040,,2025-01-02 09:22:58,2025-07-01 09:55:28,,218,latin1_swedish_ci,91.66,16.56
+soap_price_list_versiones,InnoDB,12,11,16384,0,13.0,2025-01-01 18:27:38,2025-07-01 09:58:36,,1489,latin1_swedish_ci,0.02,0.0
+soap_service,InnoDB,55,53,16384,0,,2023-05-09 06:42:27,2025-01-30 15:57:17,,309,latin1_swedish_ci,0.02,0.0
+tareas,InnoDB,22879,16459,4653056,0,,2023-05-09 06:42:27,2025-08-19 07:19:48,,282,latin1_swedish_ci,4.44,0.0
+tareas_estados,InnoDB,3,2,16384,0,,2023-05-09 06:42:27,,,8192,latin1_swedish_ci,0.02,0.0
+tareas_tipos,InnoDB,49,48,16384,0,51.0,2023-05-09 06:42:27,,,341,latin1_swedish_ci,0.02,0.0
+tareas_tipos_lineas,InnoDB,6,7,16384,0,6.0,2023-05-09 06:42:27,,,2340,latin1_swedish_ci,0.02,0.0
+token_byVIN,InnoDB,761,652,98304,0,762.0,2023-05-09 06:42:27,2025-06-12 15:29:42,,150,latin1_swedish_ci,0.09,0.0
+tramos_margen,InnoDB,5,5,16384,0,,2023-08-31 11:57:50,,,3276,latin1_swedish_ci,0.02,0.0
+veh_tip_con,InnoDB,4,4,16384,0,5.0,2023-05-09 06:42:27,,,4096,latin1_swedish_ci,0.02,0.0
+vehiculos,InnoDB,13969,11206,1589248,0,,2023-05-09 06:42:27,2025-08-19 07:23:35,,141,latin1_swedish_ci,1.52,0.0
+vista_movimientos_historicos,Unknown,165016,0,0,0,,,,VIEW,0,,0.0,0.0
+vto_cli,InnoDB,60455,50270,8929280,0,,2023-05-09 06:42:27,2025-08-19 07:40:48,,177,latin1_swedish_ci,8.52,0.0
+vto_cli_fac,InnoDB,81600,68190,4734976,0,,2023-05-09 06:42:27,2025-08-19 07:40:48,,69,latin1_swedish_ci,4.52,0.0
+vto_cli_his,InnoDB,819,535,81920,0,,2023-05-09 06:42:27,2025-08-19 06:50:53,,153,latin1_swedish_ci,0.08,0.0
+vto_cli_his_agru,InnoDB,11995,6609,1589248,0,,2023-05-09 06:42:27,2025-08-19 06:44:34,,240,latin1_swedish_ci,1.52,0.0
+vto_pro,InnoDB,16457,11865,2637824,0,,2023-05-09 06:42:27,2025-08-19 06:54:16,,222,latin1_swedish_ci,2.52,0.0
+vto_pro_fac,InnoDB,25526,19963,1540096,0,,2023-05-09 06:42:27,2025-08-19 06:54:05,,77,latin1_swedish_ci,1.47,0.0
