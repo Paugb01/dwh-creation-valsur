@@ -1,185 +1,38 @@
-# MySQL to GCP Data Pipeline - Version 2.0
+# Data Warehouse Creation - Valsur
 
-A production-ready, modular data pipeline that extracts data from MySQL databases and loads it to Google Cloud Platform with intelligent incremental loading capabilities.
+This project has been reorganized into two main approaches:
 
-## 🚀 Features
+## Project Structure
 
-- **🔄 Incremental Loading**: Only extracts new/changed data based on timestamp columns
-- **📊 Multi-table Support**: Handles all 220+ tables in your database efficiently
-- **☁️ Cloud Integration**: Automatic upload to Google Cloud Storage with proper partitioning
-- **🏗️ Modular Architecture**: Clean, organized codebase with reusable components
-- **🔐 Enterprise Security**: Proper credential management and Git safety
-- **📈 Production Ready**: Comprehensive logging, error handling, and monitoring
-- **🧪 Well Tested**: Extensive testing with 400K+ records processed successfully
+- **`batch_only/`**: Clean, minimal batch-only data loader (recommended for new development)
+- **`legacy_incremental_batch/`**: Original full-featured loader supporting both incremental and batch extraction
 
-## 📁 Project Structure
+## Quick Start
 
-```
-pruebas-dwh/
-├── config/           # 🔧 Configuration files (settings + secrets)
-├── extractors/       # 📊 Modular data extraction components  
-├── scripts/          # 🔄 Automation and utility scripts
-├── docs/            # 📚 Comprehensive documentation
-├── .keys/           # 🔐 Secure credential storage
-├── logs/            # 📝 Application logging
-└── extracted_data/  # 💾 Local bronze layer
-```
-
-For detailed structure see: [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)
-
-## 🔧 Quick Start
-
-### 1. Setup Environment
+### For Batch-Only Loading (Recommended)
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run interactive setup (creates config files)
-python scripts/setup.py
+cd batch_only
+python run_batch.py
 ```
 
-### 2. Test Connection
+### For Legacy Full-Featured Loading
 ```bash
-# Test basic extraction
-python extractors/simple_extractor.py
-
-# Test incremental loading  
-python scripts/test_incremental.py
-```
-
-### 3. Production Extraction
-```bash
-# Run batch extraction (all tables)
-python extractors/batch_extractor.py
-
-# Start daily automation
+cd legacy_incremental_batch
 python scripts/daily_pipeline.py
 ```
 
-## 🏗️ Architecture Components
+## Which Version to Use?
 
-### Core Extractors
-- **BaseExtractor**: Common functionality (connections, storage, logging)
-- **SimpleExtractor**: Basic table extraction for testing
-- **IncrementalExtractor**: Smart watermark-based incremental loading  
-- **BatchExtractor**: Production-scale multi-table processing
+- **Use `batch_only/`** if you only need batch data extraction (simpler, cleaner)
+- **Use `legacy_incremental_batch/`** if you need incremental loading or want to reference the original implementation
 
-### Configuration System
-- **config/config.json**: Application settings (safe to commit)
-- **config/secrets.json**: Database & cloud credentials (gitignored)
-- **Modular Design**: Easy to extend and maintain
+## Configuration
 
-### Data Flow
-```
-MySQL (pk_gest_xer) → Local Bronze → GCS Bronze → BigQuery (Future)
-                    ↘ Watermarks ↗
-```
+Each folder has its own configuration:
+- `batch_only/config.json`: Simple batch configuration
+- `legacy_incremental_batch/config/`: Full configuration with secrets
 
-## 📊 Incremental Loading
-
-Automatically detects timestamp columns and tracks watermarks:
-
-```json
-{
-  "accesos_presencia": {
-    "last_timestamp": "2025-08-18 09:24:28",
-    "timestamp_column": "fecha", 
-    "extraction_type": "incremental"
-  }
-}
-```
-
-**Smart Detection**: Finds columns like `fecha`, `created_at`, `updated_at`, etc.
-**Efficiency**: Only processes new/changed data after first run
-**Fallback**: Uses full extraction for tables without timestamps
-
-## 🎯 Performance Results
-
-**Latest Test (20 Tables)**:
-- ⏱️ Duration: 22 seconds
-- ✅ Success Rate: 100% (19/19 tables)  
-- 📈 Records Processed: 417,000+
-- 🔄 Incremental: 2 tables (automatic)
-- 📋 Full: 17 tables (as needed)
-
-## 🔐 Security Features
-
-- **Credential Separation**: Secrets never stored in code
-- **Service Account Auth**: Secure GCP authentication  
-- **Git Safety**: Proper `.gitignore` prevents credential leaks
-- **Template System**: Easy credential setup without exposure
-
-## 📚 Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Project Structure](docs/PROJECT_STRUCTURE.md) | Complete code organization |
-| [GCS Setup](docs/GCS_SETUP.md) | Google Cloud Storage configuration |
-| [Git Setup](docs/GIT_SETUP.md) | Version control setup |
-| [README NEW](docs/README_NEW.md) | Comprehensive feature guide |
-
-## 🛠️ Development
-
-### Creating New Extractors
-```python
-from extractors.base_extractor import BaseExtractor
-
-class CustomExtractor(BaseExtractor):
-    def extract_data(self, table_name):
-        # Use self.get_mysql_connection()
-        # Use self.save_locally() 
-        # Use self.upload_to_gcs()
-        # Use self.logger for logging
-        pass
-```
-
-### Running Scripts
-```bash
-# Database analysis
-python scripts/table_discovery.py
-
-# Limited batch test  
-python scripts/test_batch_limited.py
-
-# Daily automation
-python scripts/daily_pipeline.py schedule
-```
-
-## 🔄 Migration Notes
-
-**From Version 1.0**: Files have been reorganized into logical folders. Legacy `config_manager.py` is maintained for compatibility, but new code should use the modular extractors.
-
-**Backward Compatibility**: All existing functionality preserved while adding new modular architecture.
-
-## 🚀 Roadmap
-
-### ✅ Completed
-- [x] Modular architecture with base classes
-- [x] Intelligent incremental loading
-- [x] Production batch processing  
-- [x] Cloud integration with GCS
-- [x] Comprehensive testing & monitoring
-
-### 🚧 In Progress  
-- [ ] BigQuery integration for silver/gold layers
-- [ ] Advanced data quality checks
-- [ ] Web-based monitoring dashboard
-
-### 📋 Future
-- [ ] Real-time streaming capabilities
-- [ ] Automated schema evolution handling
-- [ ] Plugin system for custom extractors
-
-## 📞 Support
-
-**Check Status**: `python project_summary.py`
-**View Logs**: `logs/pipeline_YYYYMMDD.log`  
-**Test Components**: Scripts in `/scripts` folder
-**Documentation**: Complete guides in `/docs` folder
-
----
-
-**Status**: ✅ Production Ready | **Architecture**: Modular 2.0 | **Tables**: 220+ | **Success Rate**: 100%
+See the README files in each folder for detailed setup instructions.
    ```
 
 2. Create and activate virtual environment:

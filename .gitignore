@@ -151,3 +151,19 @@ test_output/
 quick_test/
 temp/
 tmp/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore secrets and credentials
+secrets.json
+.keys/
+*.json.key
+secrets.json.template
+# Ignore logs and output
+logs/
+extracted_data/
+
+# Ignore environment files
+.env
