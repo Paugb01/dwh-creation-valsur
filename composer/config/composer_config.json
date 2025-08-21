@@ -1,0 +1,25 @@
+{
+  "gcp": {
+    "project_id": "dwh-building",
+    "bucket_name": "valsurtruck-dwh-bronze",
+    "service_account_key_path": "/home/airflow/gcs/data/service-account.json"
+  },
+  "bigquery": {
+    "location": "US",
+    "bronze_dataset": "bronze1",
+    "silver_dataset": "silver1", 
+    "gold_dataset": "gold1"
+  },
+  "pipeline": {
+    "target_tables": [
+      "alm_his_1",
+      "alm_his_2", 
+      "alm_pie_1",
+      "alm_pie_2",
+      "piezas_1",
+      "piezas_2"
+    ],
+    "extraction_timeout_hours": 2,
+    "ingestion_timeout_hours": 1
+  }
+}

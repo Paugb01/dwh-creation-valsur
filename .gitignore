@@ -145,6 +145,13 @@ credentials.json
 !requirements.txt
 !config/config.json
 !config/secrets.json.template
+!composer/config/composer_config.json
+
+# Composer specific - allow config but not secrets
+!composer/dags/*.py
+!composer/requirements.txt
+!composer/README.md
+!composer/deploy.sh
 
 # Temporary files
 test_output/
