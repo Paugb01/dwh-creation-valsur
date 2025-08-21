@@ -1,8 +1,0 @@
-mpymysql>=1.0.2
-pandas>=1.5.0
-pyarrow>=10.0.0
-google-cloud-storage>=2.10.0
-schedule>=1.2.0-connector-python>=8.0.0
-# Top-level requirements - see individual folders for specific requirements
-# For batch-only: see batch_only/requirements.txt
-# For legacy: see legacy_incremental_batch/requirements.txt

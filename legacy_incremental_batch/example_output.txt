@@ -1,1 +1,0 @@
-Legacy incremental or batch extraction completed.
