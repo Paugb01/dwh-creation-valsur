@@ -13,3 +13,7 @@ google-cloud-bigquery-storage>=2.20.0  # For faster BigQuery I/O
 # Authentication and credentials
 google-auth>=2.40.3
 python-dotenv>=1.0.0
+
+# Batch extraction
+pymysql>=1.0.0
+pathlib

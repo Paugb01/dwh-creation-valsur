@@ -1,5 +1,6 @@
 """
-Worker to move specific tables from GCS to BigQuery bronze layer
+Modern GCS to BigQuery Worker
+Adapted to work with the new credential management system
 """
 from google.cloud import bigquery, storage
 from google.cloud.exceptions import NotFound
@@ -8,69 +9,138 @@ from dotenv import load_dotenv
 import json
 import logging
 from datetime import datetime
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 from pathlib import Path
 import os
+import sys
+
+# Add utils path for credential management
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from utils import get_credentials_auto, load_config_from_env, setup_environment
 
 # Load environment variables
 load_dotenv()
 
 class GCSToBigQueryWorker:
-    """Worker class to handle GCS to BigQuery data movement"""
+    """
+    Modern worker class to handle GCS to BigQuery data movement
+    Uses the new credential management system with automatic fallbacks
+    """
 
-    def __init__(self, gcs_credentials=None, bq_credentials=None, config_path: str = None):
-        # Use the correct path for config file
-        if config_path is None:
-            config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config", "secrets.json")
+    def __init__(self, gcs_credentials=None, bq_credentials=None, config_path: str = None, config: Dict = None):
+        """
+        Initialize the worker with flexible credential and config options
         
-        self.config = self._load_config(config_path)
+        Args:
+            gcs_credentials: Google Cloud Storage credentials (optional)
+            bq_credentials: BigQuery credentials (optional) 
+            config_path: Path to config file (optional)
+            config: Config dictionary (optional)
+        """
+        # Setup environment if needed
+        setup_environment()
+        
+        # Load configuration
+        if config is not None:
+            self.config = config
+            self.logger = self._setup_logging()
+            self.logger.info("✅ Using provided configuration")
+        elif config_path is not None:
+            self.config = self._load_config(config_path)
+            self.logger = self._setup_logging()
+            self.logger.info(f"✅ Configuration loaded from: {config_path}")
+        else:
+            # Try to load from environment or default paths
+            self.config = load_config_from_env('SECRETS')
+            self.logger = self._setup_logging()
+            if self.config:
+                self.logger.info("✅ Configuration loaded from environment")
+            else:
+                # Fallback to legacy path
+                config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config", "secrets.json")
+                self.config = self._load_config(config_path)
+                self.logger.info(f"✅ Configuration loaded from fallback: {config_path}")
+        
+        # Extract project and bucket info
         self.project_id = self.config['gcp']['project_id']
         self.bucket_name = self.config['gcp']['bucket_name']
-        self.source_database = self.config['mysql']['database']
-
-        # Store credentials for use in BigQuery operations
-        self.gcs_credentials = gcs_credentials
-        self.bq_credentials = bq_credentials
         
-        # Get service account path for fallback
-        service_account_path = self.config['gcp'].get('service_account_key_path')
+        # Initialize credentials using modern pattern
+        self._initialize_credentials(gcs_credentials, bq_credentials)
         
-        # Initialize clients with provided credentials or fallback to config/default
-        if gcs_credentials:
-            self.storage_client = storage.Client(project=self.project_id, credentials=gcs_credentials)
+        # Initialize cloud clients
+        self._initialize_clients()
+        
+        # Define target tables and datasets
+        self._setup_datasets()
+    
+    def _initialize_credentials(self, gcs_credentials=None, bq_credentials=None):
+        """Initialize credentials with modern fallback strategy"""
+        
+        # Use provided credentials or auto-detect
+        if gcs_credentials and bq_credentials:
+            self.gcs_credentials = gcs_credentials
+            self.bq_credentials = bq_credentials
+            self.logger.info("✅ Using provided credentials")
+        elif gcs_credentials:
+            # Use same credentials for both if only GCS provided
+            self.gcs_credentials = gcs_credentials
+            self.bq_credentials = gcs_credentials
+            self.logger.info("✅ Using provided GCS credentials for both services")
         else:
-            # Fallback to service account from config or default authentication
-            if service_account_path and os.path.exists(service_account_path):
-                credentials = service_account.Credentials.from_service_account_file(service_account_path)
-                self.storage_client = storage.Client(project=self.project_id, credentials=credentials)
-                self.gcs_credentials = credentials  # Store for BigQuery use
+            # Auto-detect credentials
+            self.gcs_credentials = get_credentials_auto()
+            self.bq_credentials = self.gcs_credentials
+            if self.gcs_credentials:
+                self.logger.info("✅ Auto-detected credentials successfully")
+            else:
+                self.logger.warning("⚠️ No credentials detected, using default authentication")
+    
+    def _initialize_clients(self):
+        """Initialize Google Cloud clients with proper credential handling"""
+        
+        try:
+            # Initialize Storage client
+            if self.gcs_credentials:
+                self.storage_client = storage.Client(
+                    project=self.project_id, 
+                    credentials=self.gcs_credentials
+                )
             else:
                 self.storage_client = storage.Client(project=self.project_id)
-        
-        if bq_credentials:
-            self.bq_client = bigquery.Client(project=self.project_id, credentials=bq_credentials)
-        else:
-            # Fallback to service account from config or default authentication
-            if service_account_path and os.path.exists(service_account_path):
-                credentials = service_account.Credentials.from_service_account_file(service_account_path)
-                self.bq_client = bigquery.Client(project=self.project_id, credentials=credentials)
-                self.bq_credentials = credentials  # Store for consistency
+            
+            self.logger.info("✅ GCS client initialized")
+            
+            # Initialize BigQuery client  
+            if self.bq_credentials:
+                self.bq_client = bigquery.Client(
+                    project=self.project_id,
+                    credentials=self.bq_credentials
+                )
             else:
                 self.bq_client = bigquery.Client(project=self.project_id)
-        
-        # Setup logging
-        self._setup_logging()
-        
-        # Define target tables
-        self.target_tables = [
-            'alm_his_1', 'alm_his_2', 'alm_pie_2', 
-            'alm_pie_1', 'piezas_1', 'piezas_2'
-        ]
-        
+                
+            self.logger.info("✅ BigQuery client initialized")
+            
+        except Exception as e:
+            self.logger.error(f"❌ Failed to initialize cloud clients: {e}")
+            raise
+    
+    def _setup_datasets(self):
+        """Setup dataset configurations"""
         # Dataset configurations
         self.bronze_dataset = 'bronze1'
-        self.silver_dataset = 'silver1'
+        self.silver_dataset = 'silver1' 
         self.gold_dataset = 'gold1'
+        
+        # Source database name for GCS paths
+        self.source_database = 'valsurtruck'
+        
+        # Define target tables (can be overridden)
+        self.target_tables = [
+            'alm_his_1', 'alm_his_2', 'alm_pie_2',
+            'alm_pie_1', 'piezas_1', 'piezas_2'
+        ]
     
     def _load_config(self, config_path: str) -> Dict:
         """Load configuration from JSON file"""
@@ -82,7 +152,7 @@ class GCSToBigQueryWorker:
                 config = json.load(f)
             
             # Validate required keys
-            required_keys = ['mysql', 'gcp']
+            required_keys = ['gcp']
             for key in required_keys:
                 if key not in config:
                     raise KeyError(f"Required configuration key '{key}' not found in {config_path}")
@@ -116,7 +186,8 @@ class GCSToBigQueryWorker:
                 logging.StreamHandler()
             ]
         )
-        self.logger = logging.getLogger(self.__class__.__name__)
+        logger = logging.getLogger(self.__class__.__name__)
+        return logger
     
     def create_datasets(self):
         """Create BigQuery datasets if they don't exist"""
@@ -297,27 +368,58 @@ class GCSToBigQueryWorker:
 
 
 if __name__ == "__main__":
-    # Example usage
-    # Option 1: Use explicit credentials
-    # gcs_creds = service_account.Credentials.from_service_account_file("path/to/gcs-key.json")
-    # bq_creds = service_account.Credentials.from_service_account_file("path/to/bq-key.json")
-    # worker = GCSToBigQueryWorker(gcs_credentials=gcs_creds, bq_credentials=bq_creds)
-    
-    # Option 2: Use config file or default authentication
-    worker = GCSToBigQueryWorker()
-    
-    # Run bronze ingestion
-    results = worker.run_bronze_ingestion()
-    
-    # Validate results
-    validation = worker.validate_bronze_tables()
-    
-    print("\n" + "="*60)
-    print("BRONZE INGESTION SUMMARY")
+    """
+    Main execution with modern credential management
+    """
+    print("🚀 Starting GCS to BigQuery Worker")
     print("="*60)
     
-    for table_name, success in results.items():
-        status = "[OK] SUCCESS" if success else "[FAIL] FAILED"
-        info = validation.get(table_name, {})
-        rows = info.get('num_rows', 0) if info.get('exists') else 0
-        print(f"{table_name:<15} {status:<10} {rows:>10,} rows")
+    try:
+        # Initialize worker with automatic credential detection
+        worker = GCSToBigQueryWorker()
+        
+        print(f"📋 Project: {worker.project_id}")
+        print(f"🪣 Bucket: {worker.bucket_name}")
+        print(f"📊 Target Tables: {len(worker.target_tables)}")
+        print("-" * 60)
+        
+        # Run bronze ingestion
+        print("📥 Starting bronze ingestion...")
+        results = worker.run_bronze_ingestion()
+        
+        # Validate results
+        print("\n🔍 Validating results...")
+        validation = worker.validate_bronze_tables()
+        
+        # Summary report
+        print("\n" + "="*60)
+        print("📊 BRONZE INGESTION SUMMARY")
+        print("="*60)
+        
+        successful_tables = 0
+        total_rows = 0
+        
+        for table_name, success in results.items():
+            status = "✅ SUCCESS" if success else "❌ FAILED"
+            info = validation.get(table_name, {})
+            rows = info.get('num_rows', 0) if info.get('exists') else 0
+            
+            if success:
+                successful_tables += 1
+                total_rows += rows
+                
+            print(f"{table_name:<20} {status:<12} {rows:>10,} rows")
+        
+        print("-" * 60)
+        print(f"📈 TOTAL SUCCESS: {successful_tables}/{len(results)} tables")
+        print(f"📊 TOTAL ROWS: {total_rows:,}")
+        
+        if successful_tables == len(results):
+            print("🎉 ALL TABLES PROCESSED SUCCESSFULLY!")
+        else:
+            print("⚠️  SOME TABLES FAILED - CHECK LOGS FOR DETAILS")
+            
+    except Exception as e:
+        print(f"❌ CRITICAL ERROR: {e}")
+        import traceback
+        traceback.print_exc()
